@@ -5,6 +5,14 @@ from curses import wrapper
 
 def start_scr(stdout):
     stdout.clear()
+    stdout.addstr("""
+        _____            _               ____                      _   _____         _   
+       |_   _|   _ _ __ (_)_ __   __ _  / ___| _ __   ___  ___  __| | |_   _|__  ___| |_ 
+         | || | | | '_ \| | '_ \ / _` | \___ \| '_ \ / _ \/ _ \/ _` |   | |/ _ \/ __| __|
+         | || |_| | |_) | | | | | (_| |  ___) | |_) |  __/  __/ (_| |   | |  __/\__ \ |_ 
+         |_| \__, | .__/|_|_| |_|\__, | |____/| .__/ \___|\___|\__,_|   |_|\___||___/\__|
+             |___/|_|            |___/        |_|                    \n\n
+""")
     stdout.addstr("Welcome to the Typing Speed Test by DEAMON_X")
     stdout.addstr("\nPress any key to begin!")
     stdout.refresh()
@@ -78,18 +86,17 @@ def main(stdout):
     # First is for text second is for background
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
-    curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
     
     start_scr(stdout)
     while(True):
         test(stdout)
         
-        stdout.addstr(2, 0, "You Completed the Speed Test! Press any key to continue..")
+        stdout.addstr(2, 0, "You completed the Speed Test! \n\n Press any key to play again.. \n\n Press Rsc to exit..")
         key = stdout.getkey()
         if ord(key) == 27:
             break
         
-   
+    
 
 wrapper(main)
 
